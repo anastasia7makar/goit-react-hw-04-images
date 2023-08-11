@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchGallery } from '../services/getImages';
 import css from '../components/App.module.css';
@@ -55,25 +55,19 @@ export const App = () => {
     }
   };
 
-  const handleSearch = useCallback(
-    value => {
-      window.scrollTo({ top: 0 });
-      setSearchText(value);
-      fetchGalleryItems(value, false, 0, 1);
-    },
-    [searchText, pagination]
-  );
+  const handleSearch = value => {
+    window.scrollTo({ top: 0 });
+    setSearchText(value);
+    fetchGalleryItems(value, false, 0, 1);
+  };
 
-  const onLoadMore = useCallback(
-    () =>
-      fetchGalleryItems(
-        searchText,
-        true,
-        pagination.currentQuantity,
-        pagination.galleryPage
-      ),
-    [searchText, pagination]
-  );
+  const onLoadMore = () =>
+    fetchGalleryItems(
+      searchText,
+      true,
+      pagination.currentQuantity,
+      pagination.galleryPage
+    );
 
   return (
     <div className={css.app}>

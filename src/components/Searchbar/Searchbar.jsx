@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import css from '../Searchbar/Searchbar.module.css';
 import { Notify } from 'notiflix';
 
@@ -10,18 +10,15 @@ const Searchbar = ({ handleSearch }) => {
     setValue(value.toLowerCase().trim());
   };
 
-  const handleSubmit = useCallback(
-    e => {
-      e.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
 
-      if (value === '') {
-        return Notify.info('Please, enter search word!');
-      }
+    if (value === '') {
+      return Notify.info('Please, enter search word!');
+    }
 
-      handleSearch(value);
-    },
-    [value]
-  );
+    handleSearch(value);
+  };
 
   return (
     <header className={css.searchbar}>
