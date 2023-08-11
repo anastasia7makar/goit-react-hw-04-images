@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchGallery } from '../services/getImages';
 import css from '../components/App.module.css';
