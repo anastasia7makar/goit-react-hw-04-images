@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'components/Modal/Modal';
 import css from '../ImageGalleryItem/ImageGalleryItem.module.css';

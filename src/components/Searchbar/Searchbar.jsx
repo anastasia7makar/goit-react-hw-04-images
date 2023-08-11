@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Component, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import css from '../Searchbar/Searchbar.module.css';
 import { Notify } from 'notiflix';
 
