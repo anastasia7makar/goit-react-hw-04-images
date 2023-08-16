@@ -49,7 +49,9 @@ export const App = () => {
     if (searchText !== '') {
       fetchGalleryItems(searchText, galleryPage);
     }
-  }, [searchText, galleryPage]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchText, galleryPage]); 
 
   const handleSearch = value => {
     window.scrollTo({ top: 0 });
