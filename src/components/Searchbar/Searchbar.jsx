@@ -7,7 +7,7 @@ const Searchbar = ({ handleSearch }) => {
   const [value, setValue] = useState('');
 
   const handleChange = ({ target: { value } }) => {
-    setValue(value.toLowerCase().trim());
+    setValue(value);
   };
 
   const handleSubmit = e => {
@@ -17,7 +17,7 @@ const Searchbar = ({ handleSearch }) => {
       return Notify.info('Please, enter search word!');
     }
 
-    handleSearch(value);
+    handleSearch(value.toLowerCase().trim());
   };
 
   return (
