@@ -6,10 +6,9 @@ export function fetchGallery(query, currentPage = 1) {
     url: 'https://pixabay.com/api/',
     params: {
       key: '38235772-33311ad07fcdc3c53044fd6f6',
-      q: `${query}`,
+      q: query,
       image_type: 'photo',
       orientation: 'horizontal',
-      safesearch: true,
       page: currentPage,
       per_page: 12,
     },

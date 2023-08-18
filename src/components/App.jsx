@@ -14,6 +14,7 @@ export const App = () => {
   const [currentQuantity, setCurrentQuantity] = useState(0);
   const [totalHits, setTotalHIts] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [isShowButton, setIsShowButton] = useState(false)
 
   const maxPage = Math.ceil(totalHits / 12);
   const showButton = galleryItems.length > 0 && galleryPage < maxPage;
@@ -35,13 +36,14 @@ export const App = () => {
       if (galleryPage === 1)
         Notify.success(`Hooray! We found ${totalHits} images.`);
 
-      setGalleryItems([...galleryItems, ...hits]);
+      setGalleryItems((prevGalleryItems) => [...prevGalleryItems, ...hits]);
       setTotalHIts(totalHits);
-      setCurrentQuantity(currentQuantity + hits.length);
+      setCurrentQuantity((prevCurrentQuantity) => prevCurrentQuantity + hits.length);
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
+      setIsShowButton(true)
     }
   };
 
@@ -50,12 +52,12 @@ export const App = () => {
       fetchGalleryItems(searchText, galleryPage);
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText, galleryPage]); 
 
   const handleSearch = value => {
     window.scrollTo({ top: 0 });
 
+    setCurrentQuantity(currentQuantity);
     setGalleryPage(1);
     setGalleryItems([]);
     setSearchText(value);
@@ -70,7 +72,7 @@ export const App = () => {
       <Seachbar handleSearch={handleSearch} />
       {galleryItems.length > 0 && <ImageGallery galleryItems={galleryItems} />}
       {loading && <Loader />}
-      {showButton && <Button handleClick={onLoadMore} />}
+      {showButton && isShowButton && <Button handleClick={onLoadMore} />}
     </div>
   );
 };
